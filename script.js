@@ -3,6 +3,11 @@ clearDisplay();
 
 let firstOperand, secondOperand = 0;
 let operator = "";
+let operatorSelectedFlag = false;
+let resultDisplayedFlag = false;
+
+const operatorButtons = document.querySelectorAll(".operator");
+const numberButtons = document.querySelectorAll(".number-button");
 
 const button0 = document.querySelector("#button-0");
 const button1 = document.querySelector("#button-1");
@@ -27,33 +32,39 @@ const buttonEquals = document.querySelector("#equals");
 
 
 function add(firstOperand, secondOperand) {
-    return 1;
+    return firstOperand + secondOperand;
 }
 
 function subtract(firstOperand, secondOperand) {
-    return 1;
+    return firstOperand - secondOperand;
 }
 
 function multiply(firstOperand, secondOperand) {
-    return 1;
+    return firstOperand * secondOperand;
 }
 
 function divide(firstOperand, secondOperand) {
-    return 1;
+    if (secondOperand == 0) {
+        alert("Division by Zero is impossible!");
+        return 0;
+    }
+    else {
+        return firstOperand / secondOperand;
+    }
 }
 
 function operate(operator, firstOperand, secondOperand) {
     if (operator == "+") {
-        add(firstOperand, secondOperand);
+        return add(firstOperand, secondOperand);
     }
     else if (operator == "-") {
-        subtract(firstOperand, secondOperand);
+        return subtract(firstOperand, secondOperand);
     }
     else if (operator == "*") {
-        multiply(firstOperand, secondOperand);
+        return multiply(firstOperand, secondOperand);
     }
     else if (operator == "/") {
-        divide(firstOperand, secondOperand);
+        return divide(firstOperand, secondOperand);
     }
 }
 
@@ -70,7 +81,8 @@ function populateDisplay(nString) {
 
 function getDisplayNumber() {
     let display = document.getElementById("calc-display");
-    return Number(display.textContent());
+    let text = display.textContent;
+    return Number(text);
 }
 
 function clearDisplay() {
@@ -78,19 +90,64 @@ function clearDisplay() {
     display.textContent = "";
 }
 
-function getFirstOperand() {
+function getResult() {
+    if (operatorSelectedFlag)
+    {
+        secondOperand = getDisplayNumber(); 
+        clearDisplay(); 
+        console.log("First Operand: " + firstOperand);
+        console.log("Second Operand: " + secondOperand);
+        console.log("Operator: " + operator);
 
+        firstOperandNumeric = Number(firstOperand);
+        secondOperandNumeric = Number(secondOperand);
+        numericResult = operate(operator, firstOperandNumeric, secondOperandNumeric);
+        console.log(numericResult);
+        numericResult = Number(numericResult.toPrecision(16))
+        populateDisplay(numericResult.toString());
+        resultDisplayedFlag = true;
+    }
+    
 }
 
-button0.addEventListener("click", function () { populateDisplay("0");});
-button1.addEventListener("click", function () { populateDisplay("1");});
-button2.addEventListener("click", function () { populateDisplay("2");});
-button3.addEventListener("click", function () { populateDisplay("3");});
-button4.addEventListener("click", function () { populateDisplay("4");});
-button5.addEventListener("click", function () { populateDisplay("5");});
-button6.addEventListener("click", function () { populateDisplay("6");});
-button7.addEventListener("click", function () { populateDisplay("7");});
-button8.addEventListener("click", function () { populateDisplay("8");});
-button9.addEventListener("click", function () { populateDisplay("9");});
 
-buttonClear.addEventListener("click", function () {clearDisplay();});
+operatorButtons.forEach(button => { 
+    button.addEventListener("click", function () {
+        if (operator === "") {
+            operatorSelectedFlag = true;
+            firstOperand = getDisplayNumber(); 
+            clearDisplay(); 
+            console.log(firstOperand)
+        }});
+        
+});
+
+button0.addEventListener("click", function () { if (resultDisplayedFlag == false) { populateDisplay("0"); } });
+button1.addEventListener("click", function () { if (resultDisplayedFlag == false) { populateDisplay("1"); } });
+button2.addEventListener("click", function () { if (resultDisplayedFlag == false) { populateDisplay("2"); } });
+button3.addEventListener("click", function () { if (resultDisplayedFlag == false) { populateDisplay("3"); } });
+button4.addEventListener("click", function () { if (resultDisplayedFlag == false) { populateDisplay("4"); } });
+button5.addEventListener("click", function () { if (resultDisplayedFlag == false) { populateDisplay("5"); } });
+button6.addEventListener("click", function () { if (resultDisplayedFlag == false) { populateDisplay("6"); } });
+button7.addEventListener("click", function () { if (resultDisplayedFlag == false) { populateDisplay("7"); } });
+button8.addEventListener("click", function () { if (resultDisplayedFlag == false) { populateDisplay("8"); } });
+button9.addEventListener("click", function () { if (resultDisplayedFlag == false) { populateDisplay("9"); } });
+
+buttonAdd.addEventListener("click", function () {operator = "+";});
+buttonSubtract.addEventListener("click", function () {operator = "-";});
+buttonMultiply.addEventListener("click", function () {operator = "*";});
+buttonDivide.addEventListener("click", function () {operator = "/";});
+
+buttonPoint.addEventListener("click", function () { if (resultDisplayedFlag == false) { populateDisplay(".") } ;});
+
+buttonClear.addEventListener("click", function () {
+    operatorSelectedFlag = false;
+    resultDisplayedFlag = false; 
+    operator = ""; 
+    firstOperand = 0; 
+    secondOperand = 0; 
+    clearDisplay();}
+);
+
+buttonEquals.addEventListener("click", function () { getResult() });
+
