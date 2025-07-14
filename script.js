@@ -1,22 +1,33 @@
 let firstOperand, secondOperand = 0;
 let operator = "";
 
-function add() {
+function add(firstOperand, secondOperand) {
     return 1;
 }
 
-function subtract() {
+function subtract(firstOperand, secondOperand) {
     return 1;
 }
 
-function multiply() {
+function multiply(firstOperand, secondOperand) {
     return 1;
 }
 
-function divide() {
+function divide(firstOperand, secondOperand) {
     return 1;
 }
 
 function operate(operator, firstOperand, secondOperand) {
-    return 1;
+    if (operator == "+") {
+        add(firstOperand, secondOperand);
+    }
+    else if (operator == "-") {
+        subtract(firstOperand, secondOperand);
+    }
+    else if (operator == "*") {
+        multiply(firstOperand, secondOperand);
+    }
+    else if (operator == "/") {
+        divide(firstOperand, secondOperand);
+    }
 }
