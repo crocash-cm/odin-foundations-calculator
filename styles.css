@@ -15,7 +15,11 @@
 }
 
 .display {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
     width: 140px;
+    background-color: white;
 }
 
 button {
