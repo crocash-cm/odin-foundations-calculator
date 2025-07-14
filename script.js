@@ -1,5 +1,7 @@
-// clearDisplay to get value of textContent.length to 0
+// clearDisplay to get value of textContent.length of calc-display buffer div to 0
 clearDisplay();
+
+const CHAR_LENGTH_DISPLAY_BUFFER = 16;
 
 let firstOperand, secondOperand = 0;
 let operator = "";
@@ -72,7 +74,7 @@ function populateDisplay(nString) {
     let display = document.getElementById("calc-display");
     let currentContent = display.textContent;
     console.log(currentContent.length);
-    if (currentContent.length < 16)
+    if (currentContent.length < CHAR_LENGTH_DISPLAY_BUFFER)
     {
         display.textContent = currentContent + nString;
     }
@@ -103,7 +105,7 @@ function getResult() {
         secondOperandNumeric = Number(secondOperand);
         numericResult = operate(operator, firstOperandNumeric, secondOperandNumeric);
         console.log(numericResult);
-        numericResult = Number(numericResult.toPrecision(16))
+        numericResult = Number(numericResult.toPrecision(CHAR_LENGTH_DISPLAY_BUFFER))
         populateDisplay(numericResult.toString());
         resultDisplayedFlag = true;
     }
