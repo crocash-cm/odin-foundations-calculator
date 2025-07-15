@@ -1,7 +1,7 @@
-// clearDisplay to get value of textContent.length of calc-display buffer div to 0
+// clearDisplay necessary to reset character width of display div to 0
 clearDisplay();
 
-// Display width in characters of calculator display buffer
+// Width in characters of calculator display buffer
 const CHAR_LENGTH_DISPLAY_BUFFER = 16;
 
 // Computation variables
