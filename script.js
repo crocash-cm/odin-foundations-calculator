@@ -4,7 +4,7 @@ clearDisplay();
 // Display width in characters of calculator display buffer
 const CHAR_LENGTH_DISPLAY_BUFFER = 16;
 
-// Compuitation variables
+// Computation variables
 let firstOperand, secondOperand = 0;
 let operator = "";
 
