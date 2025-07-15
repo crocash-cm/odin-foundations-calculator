@@ -92,6 +92,14 @@ function clearDisplay() {
     display.textContent = "";
 }
 
+function resetCalculator() {
+    operatorSelectedFlag = false;
+    resultDisplayedFlag = false; 
+    operator = ""; 
+    firstOperand = 0; 
+    secondOperand = 0; 
+}
+
 function getResult() {
     if (operatorSelectedFlag) {
         secondOperand = getDisplayNumber(); 
@@ -141,14 +149,9 @@ buttonDivide.addEventListener("click", function () {operator = "/";});
 
 buttonPoint.addEventListener("click", function () { if (resultDisplayedFlag == false) { populateDisplay(".") } ;});
 
-buttonClear.addEventListener("click", function () {
-    operatorSelectedFlag = false;
-    resultDisplayedFlag = false; 
-    operator = ""; 
-    firstOperand = 0; 
-    secondOperand = 0; 
-    clearDisplay();}
-);
+buttonClear.addEventListener("click", function () { 
+    resetCalculator();
+    clearDisplay();});
 
 buttonEquals.addEventListener("click", function () { getResult() });
 
