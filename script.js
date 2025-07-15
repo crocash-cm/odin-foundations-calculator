@@ -1,13 +1,18 @@
 // clearDisplay to get value of textContent.length of calc-display buffer div to 0
 clearDisplay();
 
+// Display width in characters of calculator display buffer
 const CHAR_LENGTH_DISPLAY_BUFFER = 16;
 
+// Compuitation variables
 let firstOperand, secondOperand = 0;
 let operator = "";
+
+// State flags
 let operatorSelectedFlag = false;
 let resultDisplayedFlag = false;
 
+// DOM Object Variables
 const operatorButtons = document.querySelectorAll(".operator");
 const numberButtons = document.querySelectorAll(".number-button");
 
@@ -32,6 +37,7 @@ const buttonClear = document.querySelector("#clear");
 const buttonEquals = document.querySelector("#equals");
 
 
+// Arithmetic functions
 
 function add(firstOperand, secondOperand) {
     return firstOperand + secondOperand;
@@ -70,6 +76,7 @@ function operate(operator, firstOperand, secondOperand) {
     }
 }
 
+// Display functions
 function populateDisplay(nString) {
     let display = document.getElementById("calc-display");
     let currentContent = display.textContent;
@@ -92,6 +99,8 @@ function clearDisplay() {
     display.textContent = "";
 }
 
+
+// Calculator use functions
 function resetCalculator() {
     operatorSelectedFlag = false;
     resultDisplayedFlag = false; 
@@ -119,7 +128,7 @@ function getResult() {
     
 }
 
-
+// Event Listeners
 operatorButtons.forEach(button => { 
     button.addEventListener("click", function () {
         if (operator === "") {
