@@ -93,8 +93,7 @@ function clearDisplay() {
 }
 
 function getResult() {
-    if (operatorSelectedFlag)
-    {
+    if (operatorSelectedFlag) {
         secondOperand = getDisplayNumber(); 
         clearDisplay(); 
         console.log("First Operand: " + firstOperand);
