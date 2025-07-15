@@ -142,10 +142,10 @@ button7.addEventListener("click", function () { if (resultDisplayedFlag == false
 button8.addEventListener("click", function () { if (resultDisplayedFlag == false) { populateDisplay("8"); } });
 button9.addEventListener("click", function () { if (resultDisplayedFlag == false) { populateDisplay("9"); } });
 
-buttonAdd.addEventListener("click", function () {operator = "+";});
-buttonSubtract.addEventListener("click", function () {operator = "-";});
-buttonMultiply.addEventListener("click", function () {operator = "*";});
-buttonDivide.addEventListener("click", function () {operator = "/";});
+buttonAdd.addEventListener("click", function () { operator = "+"; });
+buttonSubtract.addEventListener("click", function () { operator = "-"; });
+buttonMultiply.addEventListener("click", function () { operator = "*"; });
+buttonDivide.addEventListener("click", function () { operator = "/"; });
 
 buttonPoint.addEventListener("click", function () { if (resultDisplayedFlag == false) { populateDisplay(".") } ;});
 
